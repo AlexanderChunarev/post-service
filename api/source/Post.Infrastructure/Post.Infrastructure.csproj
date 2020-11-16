@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Extensions.NetCore" Version="3.2.0" />
+    <PackageReference Include="FluentMigrator" Version="3.2.9" />
+    <PackageReference Include="Npgsql" Version="4.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Post.Domain\Post.Domain.csproj" />
+    <ProjectReference Include="..\Post.Application\Post.Application.csproj" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
