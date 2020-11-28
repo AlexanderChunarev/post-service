@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Post.Application.UseCases.Example;
+using Post.Application.UseCases.Client;
 
 namespace Post.WebApi.Extensions
 {
@@ -7,7 +7,7 @@ namespace Post.WebApi.Extensions
     {
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
-            services.AddScoped<IAddExampleUseCase, AddExampleUseCase>();
+            services.AddScoped<IRegisterClientUseCase, RegisterClientUseCase>();
 
             return services;
         }
