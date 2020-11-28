@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Post.WebApi.UseCases.Login;
+using Post.WebApi.UseCases.Client;
 
 namespace Post.WebApi.Extensions
 {
@@ -7,9 +7,9 @@ namespace Post.WebApi.Extensions
     {
         public static IServiceCollection AddPresenters(this IServiceCollection services)
         {
-            services.AddScoped<ExamplePresenter, ExamplePresenter>();
-            services.AddScoped<Post.Application.Boundaries.Example.IOutputPort>(
-                x => x.GetRequiredService<ExamplePresenter>());
+            services.AddScoped<RegisterClientPresenter, RegisterClientPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Client.IOutputPort>(
+                x => x.GetRequiredService<RegisterClientPresenter>());
 
             return services;
         }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using Post.Application.Repositories;
+using Post.Application.Repositories.Client;
 using Post.Infrastructure.DapperDataAccess.Repositories;
 
 namespace Post.WebApi.Extensions
@@ -16,7 +17,7 @@ namespace Post.WebApi.Extensions
                 options => new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")));
 
             // Add repositories below
-            services.AddScoped<IExampleRepository, ExampleRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
             return services;
         }
     }

@@ -1,4 +1,4 @@
-namespace Airport.Application.Boundaries
+namespace Post.Application.Boundaries
 {
     public interface IErrorHandler
     {
