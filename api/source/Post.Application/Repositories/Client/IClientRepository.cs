@@ -5,5 +5,6 @@ namespace Post.Application.Repositories.Client
     public interface IClientRepository 
     {
         Task Register(Client client);
+        Task Update(int id, Client client);
     }
 }
