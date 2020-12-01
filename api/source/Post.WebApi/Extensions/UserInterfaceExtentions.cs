@@ -11,6 +11,10 @@ namespace Post.WebApi.Extensions
             services.AddScoped<Post.Application.Boundaries.Client.IOutputPort>(
                 x => x.GetRequiredService<RegisterClientPresenter>());
 
+            services.AddScoped<UpdateClientPresenter, UpdateClientPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Client.IOutputPort>(
+                x => x.GetRequiredService<UpdateClientPresenter>());
+
             return services;
         }
     }

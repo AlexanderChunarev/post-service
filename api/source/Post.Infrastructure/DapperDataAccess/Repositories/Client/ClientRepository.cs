@@ -21,5 +21,13 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories
             string query = "INSERT INTO client (name, surname, email, phonenumber) VALUES (@Name, @Surname, @Email, @Phonenumber)";
             await _dbConnection.ExecuteAsync(query, client);
         }
+
+        public async Task Update(int id, Client client)
+        {
+            string query = "UPDATE client "+ 
+                            "SET name = @Name, surname = @Surname, email = @Email, phonenumber = @Phonenumber "+
+                            $"WHERE id = {id}";
+            await _dbConnection.ExecuteAsync(query,client);
+        }
     }
 }

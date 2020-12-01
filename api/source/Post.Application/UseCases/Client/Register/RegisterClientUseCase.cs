@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Post.Application.Boundaries.Client;
 using Post.Application.Repositories.Client;
 
-namespace Post.Application.UseCases.Client
+namespace Post.Application.UseCases.Client.Register
 {
     using Post.Domain.Client;
     public class RegisterClientUseCase : IRegisterClientUseCase
