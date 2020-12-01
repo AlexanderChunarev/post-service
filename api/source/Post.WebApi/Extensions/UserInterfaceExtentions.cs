@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Post.WebApi.UseCases.Client;
+using Post.WebApi.UseCases.Order;
 
 namespace Post.WebApi.Extensions
 {
@@ -9,11 +10,18 @@ namespace Post.WebApi.Extensions
         {
             services.AddScoped<RegisterClientPresenter, RegisterClientPresenter>();
             services.AddScoped<Post.Application.Boundaries.Client.IOutputPort>(
-                x => x.GetRequiredService<RegisterClientPresenter>());
+                x => x.GetRequiredService<RegisterClientPresenter>()
+                );
 
             services.AddScoped<UpdateClientPresenter, UpdateClientPresenter>();
-            services.AddScoped<Post.Application.Boundaries.Client.IOutputPort>(
-                x => x.GetRequiredService<UpdateClientPresenter>());
+            services.AddScoped<Post.Application.Boundaries.Client.IUpdateOutputPort>(
+                x => x.GetRequiredService<UpdateClientPresenter>()
+                );
+
+            services.AddScoped<RegisterOrderPresenter, RegisterOrderPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Order.IOutputPort>(
+                x => x.GetRequiredService<RegisterOrderPresenter>()
+                );
 
             return services;
         }
