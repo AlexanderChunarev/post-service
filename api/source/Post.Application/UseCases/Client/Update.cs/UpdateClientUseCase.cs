@@ -8,9 +8,9 @@ namespace Post.Application.UseCases.Client.Update
     public class UpdateClientUseCase : IUpdateClientUseCase
     {
         private readonly IClientRepository _clientRepository;
-        private readonly IOutputPort _outputHandler;
+        private readonly IUpdateOutputPort _outputHandler;
 
-        public UpdateClientUseCase(IClientRepository clientRepository, IOutputPort outputHandler)
+        public UpdateClientUseCase(IClientRepository clientRepository, IUpdateOutputPort outputHandler)
         {
             _clientRepository = clientRepository;
             _outputHandler = outputHandler;

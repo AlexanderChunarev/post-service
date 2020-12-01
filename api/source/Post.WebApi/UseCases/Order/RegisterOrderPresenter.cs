@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Post.Application.Boundaries.Client;
+using Post.Application.Boundaries.Order;
 
-namespace Post.WebApi.UseCases.Client
+namespace Post.WebApi.UseCases.Order
 {
-    public sealed class UpdateClientPresenter : IUpdateOutputPort
+    public sealed class RegisterOrderPresenter : IOutputPort
     {
         public IActionResult ViewModel { get; private set; }
         public void Error(string message)
@@ -11,7 +11,7 @@ namespace Post.WebApi.UseCases.Client
             ViewModel = new JsonResult(message);
         }
 
-        public void Standard(CreateClientOutput output)
+        public void Standard(CreateOrderOutput output)
         {
             ViewModel = new JsonResult(output);
         }

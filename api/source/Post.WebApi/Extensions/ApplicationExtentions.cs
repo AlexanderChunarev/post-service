@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Post.Application.UseCases.Client.Register;
 using Post.Application.UseCases.Client.Update;
+using Post.Application.UseCases.Order.Register;
 
 namespace Post.WebApi.Extensions
 {
@@ -10,6 +11,7 @@ namespace Post.WebApi.Extensions
         {
             services.AddScoped<IRegisterClientUseCase, RegisterClientUseCase>();
             services.AddScoped<IUpdateClientUseCase, UpdateClientUseCase>();
+            services.AddScoped<IRegisterOrderUseCase, RegisterOrderUseCase>();
 
             return services;
         }
