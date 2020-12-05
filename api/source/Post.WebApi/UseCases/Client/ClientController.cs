@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Post.Application.Boundaries.Client;
+using Post.Application.Boundaries.Order;
+using Post.Application.UseCases.Client.OrderByClient;
 using Post.Application.UseCases.Client.Register;
 using Post.Application.UseCases.Client.Update;
 
@@ -12,15 +14,23 @@ namespace Post.WebApi.UseCases.Client
     {
         private readonly IRegisterClientUseCase _registerClientUseCase;
         private readonly IUpdateClientUseCase _updateClientUseCase;
+        private readonly ClientDepartureUseCase _getDepartureOrdersUseCase;
+        private readonly ClientReceivingUseCase _getReceivingOrdersUseCase;
         private readonly RegisterClientPresenter _registerClientPresenter;
         private readonly UpdateClientPresenter _updateClientPresenter;
+        private readonly ClientDeparturePresenter _clientDeparturePresenter;
+        private readonly ClientReceivingPresenter _clientReceivingPresenter;
 
-        public ClientController(IRegisterClientUseCase registerClientUseCase, IUpdateClientUseCase updateClientUseCase, RegisterClientPresenter registerClientPresenter, UpdateClientPresenter updateClientPresenter)
+        public ClientController(IRegisterClientUseCase registerClientUseCase, IUpdateClientUseCase updateClientUseCase, ClientDepartureUseCase getDepartureOrdersUseCase, ClientReceivingUseCase getReceivingOrdersUseCase, RegisterClientPresenter registerClientPresenter, UpdateClientPresenter updateClientPresenter, ClientDeparturePresenter clientDeparturePresenter, ClientReceivingPresenter clientReceivingPresenter)
         {
             _registerClientUseCase = registerClientUseCase;
             _updateClientUseCase = updateClientUseCase;
+            _getDepartureOrdersUseCase = getDepartureOrdersUseCase;
+            _getReceivingOrdersUseCase = getReceivingOrdersUseCase;
             _registerClientPresenter = registerClientPresenter;
             _updateClientPresenter = updateClientPresenter;
+            _clientDeparturePresenter = clientDeparturePresenter;
+            _clientReceivingPresenter = clientReceivingPresenter;
         }
 
         [HttpPost("register")]
@@ -35,6 +45,20 @@ namespace Post.WebApi.UseCases.Client
         {
             await _updateClientUseCase.Execute(id,input);
             return _updateClientPresenter.ViewModel;
+        }
+
+        [HttpGet("{id}/departure-orders")]
+        public async Task<IActionResult> GetDepartureByClient(int id)
+        {
+            await _getDepartureOrdersUseCase.Execute(new GetOrdersInput(id));
+            return _clientDeparturePresenter.ViewModel;
+        }
+
+        [HttpGet("{phone}/receiving-orders")]
+        public async Task<IActionResult> GetReceivingOrders(string phone)
+        {
+            await _getReceivingOrdersUseCase.Execute(new GetOrdersInput(phone));
+            return _clientReceivingPresenter.ViewModel;
         }
     }
 }
