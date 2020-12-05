@@ -23,6 +23,16 @@ namespace Post.WebApi.Extensions
                 x => x.GetRequiredService<RegisterOrderPresenter>()
                 );
 
+            services.AddScoped<ClientDeparturePresenter, ClientDeparturePresenter>();
+            services.AddScoped<Post.Application.Boundaries.Order.IOutputSendedOrders>(
+                x => x.GetRequiredService<ClientDeparturePresenter>()
+            );
+
+            services.AddScoped<ClientReceivingPresenter, ClientReceivingPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Order.IOutputReceivingOrders>(
+                x => x.GetRequiredService<ClientReceivingPresenter>()
+            );
+
             return services;
         }
     }
