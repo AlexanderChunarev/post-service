@@ -24,7 +24,7 @@ namespace Post.WebApi.Extensions
                 );
 
             services.AddScoped<ClientDeparturePresenter, ClientDeparturePresenter>();
-            services.AddScoped<Post.Application.Boundaries.Order.IOutputDepartureOrders>(
+            services.AddScoped<Post.Application.Boundaries.Order.IOutputSendedOrders>(
                 x => x.GetRequiredService<ClientDeparturePresenter>()
             );
 

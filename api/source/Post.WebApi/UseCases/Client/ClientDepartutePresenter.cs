@@ -3,7 +3,7 @@ using Post.Application.Boundaries.Order;
 
 namespace Post.WebApi.UseCases.Client
 {
-    public sealed class ClientDeparturePresenter : IOutputDepartureOrders
+    public sealed class ClientDeparturePresenter : IOutputSendedOrders
     {
         public IActionResult ViewModel { get; set; }
         public void Error(string message)

@@ -18,13 +18,13 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories
             _dbConnection = dbConnection;
         }
 
-        public async Task<IEnumerable<Domain.Order.Order>> GetDeparture(int idClient)
+        public async Task<IEnumerable<Domain.Order.Order>> GetSendedOrders(int idClient)
         {
             string query = "SELECT * from orders WHERE senderid=@IdClient";
             return await _dbConnection.QueryAsync<Domain.Order.Order>(query, new { IdClient = idClient });
         }
 
-        public async Task<IEnumerable<Domain.Order.Order>> GetReceiving(string phoneNumber)
+        public async Task<IEnumerable<Domain.Order.Order>> GetReceivingOrders(string phoneNumber)
         {
             string query = "SELECT * FROM orders WHERE recipientphonenumber=@PhoneNumber";
             return await _dbConnection.QueryAsync<Domain.Order.Order>(query, new { PhoneNumber = phoneNumber });

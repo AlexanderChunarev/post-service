@@ -6,13 +6,12 @@ using Post.Application.Repositories.Client;
 
 namespace Post.Application.UseCases.Client.OrderByClient
 {
-    public class ClientDepartureUseCase : IGetOrdersUseCase
+    public class ClientSendedOrdersUseCase : IGetOrdersUseCase
     {
         private readonly IClientRepository _clientRepository;
-        private readonly IOutputDepartureOrders _outputHandler;
-        const int DefaultIdClient = 0;
+        private readonly IOutputSendedOrders _outputHandler;
 
-        public ClientDepartureUseCase(IClientRepository clientRepository, IOutputDepartureOrders outputHandler)
+        public ClientSendedOrdersUseCase(IClientRepository clientRepository, IOutputSendedOrders outputHandler)
         {
             _clientRepository = clientRepository;
             _outputHandler = outputHandler;
@@ -25,7 +24,7 @@ namespace Post.Application.UseCases.Client.OrderByClient
                 _outputHandler.Error("Input is null.");
                 return;
             }
-            var orders = await _clientRepository.GetDeparture(input.SenderId);
+            var orders = await _clientRepository.GetSendedOrders(input.SenderId);
             _outputHandler.Standard(new CreateOrdersOutput(orders.ToList()));
         }
     }

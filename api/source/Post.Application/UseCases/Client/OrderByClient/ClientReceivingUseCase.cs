@@ -23,7 +23,7 @@ namespace Post.Application.UseCases.Client.OrderByClient
                 _outputHandler.Error("Input is null.");
                 return;
             }
-            var orders = await _clientRepository.GetReceiving(input.Phone);
+            var orders = await _clientRepository.GetReceivingOrders(input.Phone);
             _outputHandler.Standard(new CreateOrdersOutput(orders.ToList()));
         }
     }

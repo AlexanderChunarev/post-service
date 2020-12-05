@@ -14,14 +14,14 @@ namespace Post.WebApi.UseCases.Client
     {
         private readonly IRegisterClientUseCase _registerClientUseCase;
         private readonly IUpdateClientUseCase _updateClientUseCase;
-        private readonly ClientDepartureUseCase _getDepartureOrdersUseCase;
+        private readonly ClientSendedOrdersUseCase _getDepartureOrdersUseCase;
         private readonly ClientReceivingUseCase _getReceivingOrdersUseCase;
         private readonly RegisterClientPresenter _registerClientPresenter;
         private readonly UpdateClientPresenter _updateClientPresenter;
         private readonly ClientDeparturePresenter _clientDeparturePresenter;
         private readonly ClientReceivingPresenter _clientReceivingPresenter;
 
-        public ClientController(IRegisterClientUseCase registerClientUseCase, IUpdateClientUseCase updateClientUseCase, ClientDepartureUseCase getDepartureOrdersUseCase, ClientReceivingUseCase getReceivingOrdersUseCase, RegisterClientPresenter registerClientPresenter, UpdateClientPresenter updateClientPresenter, ClientDeparturePresenter clientDeparturePresenter, ClientReceivingPresenter clientReceivingPresenter)
+        public ClientController(IRegisterClientUseCase registerClientUseCase, IUpdateClientUseCase updateClientUseCase, ClientSendedOrdersUseCase getDepartureOrdersUseCase, ClientReceivingUseCase getReceivingOrdersUseCase, RegisterClientPresenter registerClientPresenter, UpdateClientPresenter updateClientPresenter, ClientDeparturePresenter clientDeparturePresenter, ClientReceivingPresenter clientReceivingPresenter)
         {
             _registerClientUseCase = registerClientUseCase;
             _updateClientUseCase = updateClientUseCase;

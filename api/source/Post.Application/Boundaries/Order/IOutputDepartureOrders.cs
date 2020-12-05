@@ -1,6 +1,6 @@
 namespace Post.Application.Boundaries.Order
 {
-    public interface IOutputDepartureOrders : IErrorHandler
+    public interface IOutputSendedOrders : IErrorHandler
     {
         void Standard(CreateOrdersOutput outputs);
     }

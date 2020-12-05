@@ -13,7 +13,7 @@ namespace Post.WebApi.Extensions
             services.AddScoped<IRegisterClientUseCase, RegisterClientUseCase>();
             services.AddScoped<IUpdateClientUseCase, UpdateClientUseCase>();
             services.AddScoped<IRegisterOrderUseCase, RegisterOrderUseCase>();
-            services.AddScoped<ClientDepartureUseCase>();
+            services.AddScoped<ClientSendedOrdersUseCase>();
             services.AddScoped<ClientReceivingUseCase>();
 
             return services;
