@@ -1,3 +1,5 @@
+using Post.Domain.Parcel;
+
 namespace Post.Application.Boundaries.Order
 {
     public class CreateOrderOutput
@@ -6,16 +8,17 @@ namespace Post.Application.Boundaries.Order
         public string RecipientName { get; set; }
         public string RecipientSurname { get; set; }
         public string RecipientPhoneNumber { get; set; }
-        public double Weight { get; set; } //вага укажеться адміністратором під час оформлення
+        public Parcel Parcel { get; set; }
         public string Status { get; set; }
-        public CreateOrderOutput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, double weight, string status)
+        public CreateOrderOutput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, Parcel parcel, string status)
         {
             SenderId = senderId;
             RecipientName = recipientName;
             RecipientSurname = recipientSurname;
             RecipientPhoneNumber = recipientPhoneNumber;
-            Weight = weight;
+            Parcel = parcel;
             Status = status;
         }
+        
     }
 }

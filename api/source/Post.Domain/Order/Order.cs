@@ -1,5 +1,6 @@
 namespace Post.Domain.Order
 {
+    using Post.Domain.Parcel;
     public class Order
     {
         public int Id { get; set; }
@@ -7,7 +8,7 @@ namespace Post.Domain.Order
         public string RecipientName { get; set; }
         public string RecipientSurname { get; set; }
         public string RecipientPhonenumber { get; set; }
-        public double Weight { get; set; } //вага укажеться адміністратором під час оформлення
+        public int ParcelId { get; set; }
         public string Status { get; set; }
     }
 }

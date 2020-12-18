@@ -4,15 +4,20 @@ using Post.Application.Repositories.Order;
 
 namespace Post.Application.UseCases.Order.Register
 {
+    using Post.Application.Repositories.Parcel;
     using Post.Domain.Order;
+    using Post.Domain.Parcel;
+
     public class RegisterOrderUseCase : IRegisterOrderUseCase
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IParcelRepository _parcelRepository;
         private readonly IOutputPort _outputHandler;
 
-        public RegisterOrderUseCase(IOrderRepository orderRepository, IOutputPort outputHandler)
+        public RegisterOrderUseCase(IOrderRepository orderRepository, IParcelRepository parcelRepository, IOutputPort outputHandler)
         {
             _orderRepository = orderRepository;
+            _parcelRepository = parcelRepository;
             _outputHandler = outputHandler;
         }
 
@@ -23,11 +28,18 @@ namespace Post.Application.UseCases.Order.Register
                 _outputHandler.Error("Input is null.");
                 return;
             }
+
+            var parcel = new Parcel(){
+                Name = input.ParcelName,
+                Description = input.ParcelDescription
+            };
+            var Parcel = await _parcelRepository.AddParcel(parcel);
             var order = new Order(){
                 SenderId = input.SenderId,
                 RecipientName = input.RecipientName,
                 RecipientSurname = input.RecipientSurname,
                 RecipientPhonenumber = input.RecipientPhoneNumber,
+                ParcelId = Parcel.Id,
                 Status = input.Status
             };
             await _orderRepository.RegisterOrder(order);
@@ -36,7 +48,7 @@ namespace Post.Application.UseCases.Order.Register
                 input.RecipientName,
                 input.RecipientSurname,
                 input.RecipientPhoneNumber,
-                0,
+                Parcel,
                 input.Status
                 );
              _outputHandler.Standard(createOrderOutput);   

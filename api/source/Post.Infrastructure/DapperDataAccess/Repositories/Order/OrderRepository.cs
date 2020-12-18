@@ -16,8 +16,8 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories.Order
         }
         public async Task RegisterOrder(Order order)
         {
-            string query = "INSERT INTO orders (senderid, recipientName, recipientSurname, recipientPhonenumber, weight, status)"
-                            + " VALUES (@SenderId, @RecipientName, @RecipientSurname, @RecipientPhonenumber, @Weight, @Status)";
+            string query = "INSERT INTO orders (senderid, recipientName, recipientSurname, recipientPhonenumber, parcelid, status)"
+                            + " VALUES (@SenderId, @RecipientName, @RecipientSurname, @RecipientPhonenumber, @ParcelId, @Status)";
             await _dbConnection.ExecuteAsync(query,order);
         }
     }
