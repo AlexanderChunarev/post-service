@@ -48,9 +48,9 @@ namespace Post.WebApi.Jwt
             
                 var jwtToken = (JwtSecurityToken) validatedToken;
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
-                context.Items["Client"] = clientRepository.GetById(userId).Result;
+                context.Items["User"] = clientRepository.GetById(userId).Result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // _logger.LogError(e.Message);
             }

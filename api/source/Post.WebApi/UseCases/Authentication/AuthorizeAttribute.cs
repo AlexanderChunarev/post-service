@@ -10,7 +10,7 @@ namespace Post.WebApi.UseCases.Authentication
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var client = (Domain.Client.User)context.HttpContext.Items["Client"];
+            var client = (Domain.Client.User)context.HttpContext.Items["User"];
             if (client == null)
             {
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };

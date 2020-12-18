@@ -40,7 +40,7 @@ namespace Post.WebApi.UseCases.Authentication
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] {new Claim("id", clientId.ToString())}),
-                Expires = DateTime.UtcNow.AddSeconds(5),
+                Expires = DateTime.UtcNow.AddHours(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };
