@@ -1,4 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
+using Post.Application.UseCases.Admin;
+using Post.Application.UseCases.Admin.Car;
+using Post.Application.UseCases.Admin.Driver;
 using Post.Application.UseCases.Client.OrderByClient;
 using Post.Application.UseCases.Client.Register;
 using Post.Application.UseCases.Client.Update;
@@ -15,6 +18,9 @@ namespace Post.WebApi.Extensions
             services.AddScoped<IRegisterOrderUseCase, RegisterOrderUseCase>();
             services.AddScoped<ClientSendedOrdersUseCase>();
             services.AddScoped<ClientReceivingUseCase>();
+            services.AddScoped<ICreateCarUseCase, CreateCarUseCase>();
+            services.AddScoped<IRegisterDriverUseCase, RegisterDriverUseCase>();
+            services.AddScoped<IRegisterDeliveryUseCase, RegisterDeliveryUseCase>();
 
             return services;
         }
