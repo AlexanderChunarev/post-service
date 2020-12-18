@@ -1,6 +1,6 @@
 namespace Post.Domain.Client
 {
-    public class Client
+    public class User
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -25,7 +25,7 @@ namespace Post.Application.UseCases.Authentication
 
         public async Task Execute(AuthenticationInput input)
         {
-            var client = await _clientRepository.GetClientByCredentials(
+            var client = await _clientRepository.GetUserByCredentials(
                 input.Login,
                 CryptUtils.EncryptPassword(input.Password)
             );

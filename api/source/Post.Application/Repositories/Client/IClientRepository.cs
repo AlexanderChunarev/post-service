@@ -7,11 +7,11 @@ namespace Post.Application.Repositories.Client
     
     public interface IClientRepository
     {
-        Task<Client> GetById(int id);
-        Task<Client> GetClientByCredentials(string userName, string password);
-        Task Register(Client client);
-        Task Update(int id, Client client);
-        Task<IEnumerable<Order>> GetSentOrders(int idClient);
+        Task<User> GetById(int id);
+        Task<User> GetUserByCredentials(string userName, string password);
+        Task Register(User user);
+        Task Update(int id, User user);
+        Task<IEnumerable<Order>> GetSentOrders(int userId);
         Task<IEnumerable<Order>> GetReceivingOrders(string phoneNumber);
     }
 }

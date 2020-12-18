@@ -28,7 +28,7 @@ namespace Post.Application.UseCases.Client.Register
                 return;
             }
 
-            var client = new Client(){
+            var client = new User(){
                 Name = input.Name,
                 Surname = input.Surname,
                 PhoneNumber = input.PhoneNumber,
