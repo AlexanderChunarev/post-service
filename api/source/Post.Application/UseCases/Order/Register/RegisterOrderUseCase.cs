@@ -28,6 +28,7 @@ namespace Post.Application.UseCases.Order.Register
                 RecipientName = input.RecipientName,
                 RecipientSurname = input.RecipientSurname,
                 RecipientPhonenumber = input.RecipientPhoneNumber,
+                ParcelId = input.ParcelId,
                 Status = input.Status
             };
             await _orderRepository.RegisterOrder(order);
@@ -36,7 +37,7 @@ namespace Post.Application.UseCases.Order.Register
                 input.RecipientName,
                 input.RecipientSurname,
                 input.RecipientPhoneNumber,
-                0,
+                order.ParcelId,
                 input.Status
                 );
              _outputHandler.Standard(createOrderOutput);   
