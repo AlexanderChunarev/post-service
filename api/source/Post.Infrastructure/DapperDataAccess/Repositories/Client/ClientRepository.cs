@@ -30,13 +30,13 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories.Client
 
         public async Task<Domain.User.User> GetById(int id)
         {
-            string query = "SELECT * FROM client WHERE id=@Id";
+            string query = "SELECT * FROM users WHERE id=@Id";
             return await _dbConnection.QueryFirstAsync<Domain.User.User>(query, new {Id = id});
         }
 
         public async Task<Domain.User.User> GetUserByCredentials(string login, string password)
         {
-            string query = "SELECT * FROM client WHERE email=@Login AND password=@Password";
+            string query = "SELECT * FROM users WHERE email=@Login AND password=@Password";
             return await _dbConnection.QueryFirstAsync<Domain.User.User>(query,
                 new {Login = login, Password = password});
         }
@@ -44,13 +44,13 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories.Client
         public async Task Register(Domain.User.User user)
         {
             string query =
-                "INSERT INTO client (name, surname, email, phonenumber, password, role) VALUES (@Name, @Surname, @Email, @Phonenumber, @Password, @Role)";
+                "INSERT INTO users (name, surname, email, phonenumber, password, role) VALUES (@Name, @Surname, @Email, @Phonenumber, @Password, @Role)";
             await _dbConnection.ExecuteAsync(query, user);
         }
 
         public async Task Update(int id, Domain.User.User user)
         {
-            string query = "UPDATE client " +
+            string query = "UPDATE users " +
                            "SET name = @Name, surname = @Surname, email = @Email, phonenumber = @Phonenumber " +
                            $"WHERE id = {id}";
             await _dbConnection.ExecuteAsync(query, user);
