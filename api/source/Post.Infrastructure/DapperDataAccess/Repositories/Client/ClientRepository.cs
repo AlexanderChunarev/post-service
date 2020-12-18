@@ -44,7 +44,7 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories.Client
         public async Task Register(Domain.User.User user)
         {
             string query =
-                "INSERT INTO client (name, surname, email, phonenumber, password) VALUES (@Name, @Surname, @Email, @Phonenumber, @Password)";
+                "INSERT INTO client (name, surname, email, phonenumber, password, role) VALUES (@Name, @Surname, @Email, @Phonenumber, @Password, @Role)";
             await _dbConnection.ExecuteAsync(query, user);
         }
 
