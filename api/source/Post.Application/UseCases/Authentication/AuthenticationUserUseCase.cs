@@ -10,7 +10,7 @@ using Post.Application.Utils;
 
 namespace Post.Application.UseCases.Authentication
 {
-    using Post.Domain.Client;
+    using Domain.User;
 
     public class AuthenticationUserUseCase : IAuthenticationUserUseCase
     {

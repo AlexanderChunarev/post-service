@@ -4,7 +4,7 @@ using Post.Application.Repositories.Client;
 
 namespace Post.Application.UseCases.Client.Update
 {
-    using Post.Domain.Client;
+    using Domain.User;
     public class UpdateClientUseCase : IUpdateClientUseCase
     {
         private readonly IClientRepository _clientRepository;

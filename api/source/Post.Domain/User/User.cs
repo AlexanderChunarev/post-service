@@ -1,4 +1,4 @@
-namespace Post.Domain.Client
+namespace Post.Domain.User
 {
     public class User
     {

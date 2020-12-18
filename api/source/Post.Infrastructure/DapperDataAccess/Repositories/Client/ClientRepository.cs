@@ -28,27 +28,27 @@ namespace Post.Infrastructure.DapperDataAccess.Repositories.Client
             return await _dbConnection.QueryAsync<Domain.Order.Order>(query, new {PhoneNumber = phoneNumber});
         }
 
-        public async Task<Domain.Client.User> GetById(int id)
+        public async Task<Domain.User.User> GetById(int id)
         {
             string query = "SELECT * FROM client WHERE id=@Id";
-            return await _dbConnection.QueryFirstAsync<Domain.Client.User>(query, new {Id = id});
+            return await _dbConnection.QueryFirstAsync<Domain.User.User>(query, new {Id = id});
         }
 
-        public async Task<Domain.Client.User> GetUserByCredentials(string login, string password)
+        public async Task<Domain.User.User> GetUserByCredentials(string login, string password)
         {
             string query = "SELECT * FROM client WHERE email=@Login AND password=@Password";
-            return await _dbConnection.QueryFirstAsync<Domain.Client.User>(query,
+            return await _dbConnection.QueryFirstAsync<Domain.User.User>(query,
                 new {Login = login, Password = password});
         }
 
-        public async Task Register(Domain.Client.User user)
+        public async Task Register(Domain.User.User user)
         {
             string query =
                 "INSERT INTO client (name, surname, email, phonenumber, password) VALUES (@Name, @Surname, @Email, @Phonenumber, @Password)";
             await _dbConnection.ExecuteAsync(query, user);
         }
 
-        public async Task Update(int id, Domain.Client.User user)
+        public async Task Update(int id, Domain.User.User user)
         {
             string query = "UPDATE client " +
                            "SET name = @Name, surname = @Surname, email = @Email, phonenumber = @Phonenumber " +

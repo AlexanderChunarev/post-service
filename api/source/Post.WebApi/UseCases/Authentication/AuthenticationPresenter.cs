@@ -11,7 +11,7 @@ using IOutputPort = Post.Application.Boundaries.Authentication.IOutputPort;
 
 namespace Post.WebApi.UseCases.Authentication
 {
-    using Domain.Client;
+    using Domain.User;
     public sealed class AuthenticationPresenter : IOutputPort
     {
         public IActionResult ViewModel { get; private set; }

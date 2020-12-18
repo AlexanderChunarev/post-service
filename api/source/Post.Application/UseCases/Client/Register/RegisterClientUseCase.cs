@@ -8,7 +8,7 @@ using Post.Application.Utils;
 
 namespace Post.Application.UseCases.Client.Register
 {
-    using Post.Domain.Client;
+    using Domain.User;
     public class RegisterClientUseCase : IRegisterClientUseCase
     {
         private readonly IClientRepository _clientRepository;
