@@ -7,7 +7,7 @@ namespace Post.Domain.Order
         public string RecipientName { get; set; }
         public string RecipientSurname { get; set; }
         public string RecipientPhonenumber { get; set; }
-        public double Weight { get; set; } //вага укажеться адміністратором під час оформлення
+        public int ParcelId { get; set; }
         public string Status { get; set; }
     }
 }
