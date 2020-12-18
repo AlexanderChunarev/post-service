@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Post.WebApi.UseCases.Client;
 using Post.WebApi.UseCases.Order;
+using Post.WebApi.UseCases.Parcel;
 
 namespace Post.WebApi.Extensions
 {
@@ -31,6 +32,11 @@ namespace Post.WebApi.Extensions
             services.AddScoped<ClientReceivingPresenter, ClientReceivingPresenter>();
             services.AddScoped<Post.Application.Boundaries.Order.IOutputReceivingOrders>(
                 x => x.GetRequiredService<ClientReceivingPresenter>()
+            );
+
+            services.AddScoped<ParcelPresenter, ParcelPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Parcel.IParcelOutputPort>(
+                x => x.GetRequiredService<ParcelPresenter>()
             );
 
             return services;
