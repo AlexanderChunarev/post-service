@@ -13,7 +13,7 @@ namespace Post.Infrastructure.DapperDataAccess.Migrations
                 .WithColumn("recipientname").AsString()
                 .WithColumn("recipientsurname").AsString()
                 .WithColumn("recipientphonenumber").AsString()
-                .WithColumn("weight").AsDouble()
+                .WithColumn("parcelid").AsDouble()
                 .WithColumn("status").AsString();
         }
         public override void Down()
