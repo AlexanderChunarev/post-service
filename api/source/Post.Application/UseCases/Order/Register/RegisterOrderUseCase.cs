@@ -33,13 +33,13 @@ namespace Post.Application.UseCases.Order.Register
                 Name = input.ParcelName,
                 Description = input.ParcelDescription
             };
-            var idParcel = await _parcelRepository.AddParcel(parcel);
+            var Parcel = await _parcelRepository.AddParcel(parcel);
             var order = new Order(){
                 SenderId = input.SenderId,
                 RecipientName = input.RecipientName,
                 RecipientSurname = input.RecipientSurname,
                 RecipientPhonenumber = input.RecipientPhoneNumber,
-                ParcelId = idParcel,
+                ParcelId = Parcel.Id,
                 Status = input.Status
             };
             await _orderRepository.RegisterOrder(order);
@@ -48,7 +48,7 @@ namespace Post.Application.UseCases.Order.Register
                 input.RecipientName,
                 input.RecipientSurname,
                 input.RecipientPhoneNumber,
-                order.ParcelId,
+                Parcel,
                 input.Status
                 );
              _outputHandler.Standard(createOrderOutput);   

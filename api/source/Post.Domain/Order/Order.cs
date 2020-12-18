@@ -1,5 +1,6 @@
 namespace Post.Domain.Order
 {
+    using Post.Domain.Parcel;
     public class Order
     {
         public int Id { get; set; }

@@ -1,3 +1,5 @@
+using Post.Domain.Parcel;
+
 namespace Post.Application.Boundaries.Order
 {
     public class CreateOrderOutput
@@ -6,15 +8,15 @@ namespace Post.Application.Boundaries.Order
         public string RecipientName { get; set; }
         public string RecipientSurname { get; set; }
         public string RecipientPhoneNumber { get; set; }
-        public int ParcelId { get; set; }
+        public Parcel Parcel { get; set; }
         public string Status { get; set; }
-        public CreateOrderOutput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, int parcelId, string status)
+        public CreateOrderOutput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, Parcel parcel, string status)
         {
             SenderId = senderId;
             RecipientName = recipientName;
             RecipientSurname = recipientSurname;
             RecipientPhoneNumber = recipientPhoneNumber;
-            ParcelId = parcelId;
+            Parcel = parcel;
             Status = status;
         }
         

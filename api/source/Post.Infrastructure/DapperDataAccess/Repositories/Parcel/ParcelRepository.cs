@@ -5,6 +5,7 @@ using Dapper;
 
 namespace Post.Infrastructure.Repositories.Parcel
 {
+    using Post.Domain.Parcel;
     public class ParcelRepository : IParcelRepository
     {
         private readonly IDbConnection _dbConnection;
@@ -14,10 +15,12 @@ namespace Post.Infrastructure.Repositories.Parcel
             _dbConnection = dbConnection;
         }
 
-        public async Task<int> AddParcel(Domain.Parcel.Parcel parcel)
+        public async Task<Parcel> AddParcel(Domain.Parcel.Parcel parcel)
         {
             string query = "INSERT INTO PARCEL(Name, Description) VALUES(@Name, @Description) RETURNING Id";
-            return await _dbConnection.ExecuteAsync(query, parcel);
+            string lastParcel = "SELECT id, name, description FROM parcel WHERE id = @IdLastParcel";
+            int idLastParcel = await _dbConnection.ExecuteAsync(query, parcel);
+            return await _dbConnection.QueryFirstAsync<Parcel>(lastParcel, new {IdLastParcel=idLastParcel});
         }
     }
 }
