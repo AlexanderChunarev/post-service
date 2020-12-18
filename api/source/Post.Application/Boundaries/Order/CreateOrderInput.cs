@@ -6,14 +6,16 @@ namespace Post.Application.Boundaries.Order
         public string RecipientName { get; set; }
         public string RecipientSurname { get; set; }
         public string RecipientPhoneNumber { get; set; }
+        public int ParcelId { get; set; }
         public string Status { get; set; }
 
-        public CreateOrderInput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, string status)
+        public CreateOrderInput(int senderId, string recipientName, string recipientSurname, string recipientPhoneNumber, int parcelId, string status)
         {
             SenderId = senderId;
             RecipientName = recipientName;
             RecipientSurname = recipientSurname;
             RecipientPhoneNumber = recipientPhoneNumber;
+            ParcelId = parcelId;
             Status = status;
         }
 
