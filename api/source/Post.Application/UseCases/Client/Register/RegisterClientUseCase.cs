@@ -33,7 +33,8 @@ namespace Post.Application.UseCases.Client.Register
                 Surname = input.Surname,
                 PhoneNumber = input.PhoneNumber,
                 Email = input.Email,
-                Password = CryptUtils.EncryptPassword(input.Password)
+                Password = CryptUtils.EncryptPassword(input.Password),
+                Role = Role.Client
             };
             await _clientRepository.Register(client);
             var createClientOutput = new CreateClientOutput(client.Name, client.Surname, client.PhoneNumber, client.Email);
