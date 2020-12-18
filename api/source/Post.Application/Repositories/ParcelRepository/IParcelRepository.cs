@@ -6,5 +6,6 @@ namespace Post.Application.Repositories.Parcel
     public interface IParcelRepository
     {
         Task<Parcel> AddParcel(Parcel parcel);
+        Task SetWeight(int orderId, double weight);
     }
 }
