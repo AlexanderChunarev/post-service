@@ -5,7 +5,7 @@ using Npgsql;
 using Post.Application.Repositories.Client;
 using Post.Application.Repositories.Order;
 using Post.Application.Repositories.Parcel;
-using Post.Infrastructure.DapperDataAccess.Repositories;
+using Post.Infrastructure.DapperDataAccess.Repositories.Client;
 using Post.Infrastructure.DapperDataAccess.Repositories.Order;
 using Post.Infrastructure.Repositories.Parcel;
 

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Post.WebApi.UseCases.Authentication;
 using Post.WebApi.UseCases.Client;
 using Post.WebApi.UseCases.Order;
 
@@ -31,6 +32,11 @@ namespace Post.WebApi.Extensions
             services.AddScoped<ClientReceivingPresenter, ClientReceivingPresenter>();
             services.AddScoped<Post.Application.Boundaries.Order.IOutputReceivingOrders>(
                 x => x.GetRequiredService<ClientReceivingPresenter>()
+            );
+            
+            services.AddScoped<AuthenticationPresenter, AuthenticationPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Authentication.IOutputPort>(
+                x => x.GetRequiredService<AuthenticationPresenter>()
             );
 
             return services;

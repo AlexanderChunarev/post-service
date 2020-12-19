@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Post.WebApi.Extensions;
+using Post.WebApi.Jwt;
 
 namespace Post.WebApi
 {
@@ -39,8 +40,9 @@ namespace Post.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseRouting();
+            app.UseMiddleware<JwtMiddleware>();
             app.Migrate();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

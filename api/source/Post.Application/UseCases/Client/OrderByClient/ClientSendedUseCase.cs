@@ -24,7 +24,7 @@ namespace Post.Application.UseCases.Client.OrderByClient
                 _outputHandler.Error("Input is null.");
                 return;
             }
-            var orders = await _clientRepository.GetSendedOrders(input.SenderId);
+            var orders = await _clientRepository.GetSentOrders(input.SenderId);
             _outputHandler.Standard(new CreateOrdersOutput(orders.ToList()));
         }
     }
