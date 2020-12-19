@@ -22,5 +22,17 @@ namespace Post.Infrastructure.Repositories.Parcel
             int idLastParcel = await _dbConnection.ExecuteAsync(query, parcel);
             return await _dbConnection.QueryFirstAsync<Parcel>(lastParcel, new {IdLastParcel=idLastParcel});
         }
+
+        public async Task<Parcel> GetParcelById(int parcelId)
+        {
+            string query = "SELECT id, name, description FROM parcel WHERE id = @IdLastParce";
+            return await _dbConnection.QueryFirstAsync<Parcel>(query, new {ParcelId = parcelId});
+        }
+
+        public async Task SetWeight(int orderId, double weight)
+        {
+            string query = "UPDATE parcel SET weight=@Weight WHERE id=@OrderId";
+            await _dbConnection.ExecuteAsync(query, new{Weight = weight, OrderId = orderId});
+        }
     }
 }

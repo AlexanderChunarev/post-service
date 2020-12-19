@@ -1,4 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
+using Post.WebApi.UseCases.Admin.Car;
+using Post.WebApi.UseCases.Admin.Delivery;
+using Post.WebApi.UseCases.Admin.Driver;
 using Post.WebApi.UseCases.Authentication;
 using Post.WebApi.UseCases.Client;
 using Post.WebApi.UseCases.Order;
@@ -37,6 +40,21 @@ namespace Post.WebApi.Extensions
             services.AddScoped<AuthenticationPresenter, AuthenticationPresenter>();
             services.AddScoped<Post.Application.Boundaries.Authentication.IOutputPort>(
                 x => x.GetRequiredService<AuthenticationPresenter>()
+            );
+
+            services.AddScoped<CreateCarPresenter, CreateCarPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Admin.Car.ICarOutput>(
+                x => x.GetRequiredService<CreateCarPresenter>()
+            );
+
+            services.AddScoped<RegisterDriverPresenter, RegisterDriverPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Admin.Driver.ICreateDriverOutput>(
+                x => x.GetRequiredService<RegisterDriverPresenter>()
+            );
+
+            services.AddScoped<RegisterDeliveryPresenter, RegisterDeliveryPresenter>();
+            services.AddScoped<Post.Application.Boundaries.Admin.RegisterDelivery.IRegisterDeliveryOutput>(
+                x => x.GetRequiredService<RegisterDeliveryPresenter>()
             );
 
             return services;

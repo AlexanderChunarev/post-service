@@ -6,5 +6,6 @@ namespace Post.Application.Repositories.Order
     public interface IOrderRepository
     {
         Task RegisterOrder(Order order);
+        Task<Order> GetOrderById(int orderId);
     }
 }
