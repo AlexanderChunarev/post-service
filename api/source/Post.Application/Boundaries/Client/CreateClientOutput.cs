@@ -1,6 +1,6 @@
 namespace Post.Application.Boundaries.Client
 {
-    using Post.Domain.Client;
+    using Domain.User;
     public class CreateClientOutput
     {
         public string Name { get; set; }

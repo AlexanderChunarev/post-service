@@ -1,10 +1,14 @@
+using System;
 using System.Threading.Tasks;
 using Post.Application.Boundaries.Client;
 using Post.Application.Repositories.Client;
+using System.Security.Cryptography;
+using System.Text;
+using Post.Application.Utils;
 
 namespace Post.Application.UseCases.Client.Register
 {
-    using Post.Domain.Client;
+    using Domain.User;
     public class RegisterClientUseCase : IRegisterClientUseCase
     {
         private readonly IClientRepository _clientRepository;
@@ -23,12 +27,14 @@ namespace Post.Application.UseCases.Client.Register
                 _outputHandler.Error("Input is null.");
                 return;
             }
-            System.Console.WriteLine(input == null);
-            var client = new Client(){
+
+            var client = new User(){
                 Name = input.Name,
                 Surname = input.Surname,
                 PhoneNumber = input.PhoneNumber,
-                Email = input.Email
+                Email = input.Email,
+                Password = CryptUtils.EncryptPassword(input.Password),
+                Role = Role.Client
             };
             await _clientRepository.Register(client);
             var createClientOutput = new CreateClientOutput(client.Name, client.Surname, client.PhoneNumber, client.Email);

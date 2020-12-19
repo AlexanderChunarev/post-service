@@ -8,7 +8,7 @@ using Post.Application.Repositories.Deliver;
 using Post.Application.Repositories.Driver;
 using Post.Application.Repositories.Order;
 using Post.Application.Repositories.Parcel;
-using Post.Infrastructure.DapperDataAccess.Repositories;
+using Post.Infrastructure.DapperDataAccess.Repositories.Client;
 using Post.Infrastructure.DapperDataAccess.Repositories.Order;
 using Post.Infrastructure.Repositories.Car;
 using Post.Infrastructure.Repositories.Delivery;
