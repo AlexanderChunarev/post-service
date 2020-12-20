@@ -19,6 +19,10 @@ namespace Post.Infrastructure.Repositories.Delivery
             await _dbConnection.ExecuteAsync(query, delivery);
         }
 
-        
+        public async Task<int> GetDriverIdByOrderId(int orderId)
+        {
+            string query = "SELECT driverid FROM delivery WHERE orderid=@OrderId";
+            return await _dbConnection.QueryFirstAsync<int>(query,new{orderId=orderId});
+        }
     }
 }
