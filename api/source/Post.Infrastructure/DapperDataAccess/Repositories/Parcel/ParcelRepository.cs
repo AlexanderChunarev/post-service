@@ -17,16 +17,14 @@ namespace Post.Infrastructure.Repositories.Parcel
 
         public async Task<Parcel> AddParcel(Domain.Parcel.Parcel parcel)
         {
-            string query = "INSERT INTO PARCEL(Name, Description) VALUES(@Name, @Description) RETURNING Id";
-            string lastParcel = "SELECT id, name, description FROM parcel WHERE id = @IdLastParcel";
-            int idLastParcel = await _dbConnection.ExecuteAsync(query, parcel);
-            return await _dbConnection.QueryFirstAsync<Parcel>(lastParcel, new {IdLastParcel=idLastParcel});
+            string query = "INSERT INTO PARCEL(Name, Description) VALUES(@Name, @Description) RETURNING *";
+            return await _dbConnection.QueryFirstAsync<Parcel>(query, parcel);
         }
 
         public async Task<Parcel> GetParcelById(int parcelId)
         {
-            string query = "SELECT id, name, description FROM parcel WHERE id = @IdLastParce";
-            return await _dbConnection.QueryFirstAsync<Parcel>(query, new {ParcelId = parcelId});
+            string query = "SELECT id, name, description FROM parcel WHERE id = @IdParcel";
+            return await _dbConnection.QueryFirstAsync<Parcel>(query, new {IdParcel = parcelId});
         }
 
         public async Task SetWeight(int orderId, double weight)
