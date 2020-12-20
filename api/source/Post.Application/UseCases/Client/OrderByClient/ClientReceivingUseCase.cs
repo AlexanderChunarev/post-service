@@ -33,11 +33,13 @@ namespace Post.Application.UseCases.Client.OrderByClient
                 _outputHandler.Error("Input is null.");
                 return;
             }
+            System.Console.WriteLine(input.Phone);
             var orders = await _clientRepository.GetReceivingOrders(input.Phone);
             List<CreateOrdersOutput> outputOrders = new List<CreateOrdersOutput>();
             CreateOrdersOutput tempOutput;
             foreach (var o in orders)
             {
+                System.Console.WriteLine(o.SenderId);
                 var sender = _clientRepository.GetById(o.SenderId);
                 var parcel = _parcelRepository.GetParcelById(o.ParcelId);
                 tempOutput = new CreateOrdersOutput(o.Id, sender.Result, o.RecipientName, o.RecipientSurname, parcel.Result, o.Status);
