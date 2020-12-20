@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Post.Application.Boundaries.Order;
 
@@ -11,7 +12,7 @@ namespace Post.WebApi.UseCases.Client
             ViewModel = new JsonResult(message);
         }
 
-        public void Standard(CreateOrdersOutput output)
+        public void Standard(List<CreateOrdersOutput> output)
         {
             ViewModel = new JsonResult(output);
         }

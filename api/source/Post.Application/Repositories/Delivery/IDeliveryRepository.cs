@@ -5,5 +5,6 @@ namespace Post.Application.Repositories.Deliver
     public interface IDeliveryRepository
     {
         Task AddDelivery(Delivery delivery);
+        Task<int> GetDriverIdByOrderId(int orderId);
     }
 }

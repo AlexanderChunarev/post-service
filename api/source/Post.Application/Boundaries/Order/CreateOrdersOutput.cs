@@ -3,15 +3,27 @@ using System.Collections.Generic;
 
 namespace Post.Application.Boundaries.Order
 {
+    using Post.Domain.Driver;
     using Post.Domain.Order;
+    using Post.Domain.Parcel;
+    using Post.Domain.User;
+
     public class CreateOrdersOutput
     {
-        public List<Order> Orders { get; set; }
-
-        public CreateOrdersOutput(List<Order> orders)
+        public int OrderId { get; set; }
+        public User User { get; set; }
+        public string RecipientName { get; set; }
+        public string RecipientSurname { get; set; }
+        public Parcel Parcel { get; set; }
+        public string Status { get; set; }
+         public CreateOrdersOutput(int orderId, User user, string recipientName, string recipientSurname, Parcel parcel, string status)
         {
-            Orders = orders;
+            OrderId = orderId;
+            User = user;
+            RecipientName = recipientName;
+            RecipientSurname = recipientSurname;
+            Parcel = parcel;
+            Status = status;
         }
-
     }
 }
