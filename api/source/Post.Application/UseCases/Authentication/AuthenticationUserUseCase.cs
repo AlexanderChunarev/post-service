@@ -29,7 +29,7 @@ namespace Post.Application.UseCases.Authentication
                 input.Login,
                 CryptUtils.EncryptPassword(input.Password)
             );
-
+            
             if (client == null) return;
             
             _outputHandler.Standard(new AuthenticationOutput(
@@ -37,6 +37,7 @@ namespace Post.Application.UseCases.Authentication
                 client.Name,
                 client.Surname,
                 client.Email,
+                client.PhoneNumber,
                 ""));
         }
     }
